@@ -1,0 +1,51 @@
+title = "post"
+url = "/post/:slug"
+layout = "default"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+
+[comment]
+numposts = 5
+
+[blogRelated]
+slug = "{{ :slug }}"
+results = 5
+direction = "desc"
+postPage = "blog/post"
+==
+<?php
+function onEnd(){
+    $this->page->title = $this['post']->title;
+}
+?>
+==
+<article>
+    {% set post = blogPost.post %}
+    <h2 class="entry-title">
+       {{ this.page.title }}
+    </h2>
+    <div class="entry-meta row-fluid">
+            Posted
+            {% if post.categories.count %} in
+            {% for category in post.categories %}
+            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            {% endif %}
+            on {{ post.published_at|date('M d, Y') }}
+    </div>
+    <div class="entry-content">
+        <div class="content">{{ post.content_html|raw }}</div>
+    </div>
+    <h2>Tag related posts</h2>
+<ul>
+    {% for Post in blogRelated.posts %}
+        <a href="{{Post.url}}"><li>{{ Post.title }}</li></a>
+    {% endfor %}
+</ul>
+
+    {% component 'comment' %}
+    
+</article>

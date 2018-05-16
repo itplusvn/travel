@@ -1,0 +1,86 @@
+[viewBag]
+
+[message]
+name = "octobercms"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "blog/category"
+
+[blogTags]
+results = 15
+direction = "desc"
+
+[staticMenu]
+code = "footer-menu"
+==
+<footer id="footer" class="row-fluid">
+    <div id="footer-widgets" class="container">
+        <div class="footer-widget span4 block1">
+            <div class="widget widget_latestpost">
+                <h3 class="title"><span>Categories</span></h3>
+                <div class="latest-posts widget">
+                
+                {% if blogCategories.categories %}
+                    <ul class="category-list">
+                        {% partial blogCategories ~ "::items"
+                            categories = blogCategories.categories
+                            currentCategorySlug = blogCategories.currentCategorySlug
+                        %}
+                    </ul>
+                {% endif %}
+                
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="footer-widget span4 block3">
+            <div class="widget">
+                <h3 class="title"><span>Tag Cloud</span></h3>
+                <div class="tagcloud">
+
+            {% for tag in blogTags.tags %}
+                  <a href='../tags/{{ tag.name }}'>{{ tag.name }} ({{ tag.posts|length }})</a>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-widget span4 block4">
+            <div class="widget">
+                <h3 class="title"><span>About Me</span></h3>
+                <div class="socmed clearfix">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div><!-- footer-widgets -->
+
+
+    <div id="site-info" class="container">
+
+        <div id="footer-nav" class="fr">
+            {% if staticMenu.menuItems %}
+            <ul class="menu">
+                {% partial staticMenu ~ "::items" items=staticMenu.menuItems %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <div id="credit" class="fl">
+            <p>All Right Reserved by xukachan.com</p>
+        </div>
+
+    </div><!-- .site-info -->
+
+</footer>
+
+</div><!-- #wrapper -->
+
+{% component 'message' %}

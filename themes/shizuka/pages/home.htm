@@ -1,0 +1,185 @@
+title = "home"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "java"
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+
+[blogPosts blogPosts2]
+pageNumber = "{{ :page }}"
+categoryFilter = "october-cms"
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+
+[blogPosts blogPosts3]
+pageNumber = "{{ :page }}"
+categoryFilter = "nodejs"
+postsPerPage = 4
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+{% partial 'slider' %}
+
+{% set posts = blogPosts.posts %}
+
+        <div id="home-middle" class="clearfix">
+            <div class="left span6">
+                <h3 class="title"><a href="#" title="Game News"><span>Java</span></a></h3>
+                <div class="row-fluid">
+                    {% for key, post in posts %}
+                        {% if key == 0 %}
+                            <article class="post">
+                                {% if post.featured_images.count %}
+                                    <a href="{{ post.url }}" class="image_thumb_zoom">
+                                        <img data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{{ post.url }}">
+                                        <img  src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                                    </a>
+                                {% endif %}
+
+                                <h4 class="post-title">
+                                    <a href="{{ post.url }}" title="{{ post.title }}"
+                                       rel="bookmark">{{ post.title }}</a>
+                                </h4>
+                                {{ html_limit(post.content_html,100)|raw }}
+                            </article>
+                        {% else %}
+                            <article class="post">
+                                <div class="entry clearfix">
+                                    <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">
+                                        {% if post.featured_images.count %}
+                                                <img class="thumb" data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                                        {% else %}
+                                                <img class="thumb" src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                                        {% endif %}
+                                        <h4 class="post-title">{{ post.title }}</h4>
+                                    </a>
+                                    <p>{{ html_limit(post.content_html,40)|raw }}</p>
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% else %}
+                            <div class="no-data">{{ noPostsMessage }}</div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="right span6">
+                <h3 class="title"><a title="October CMS"><span>October CMS</span></a></h3>
+                <div class="row-fluid">
+                {% set posts = blogPosts2.posts %}
+                    {% for key, post in posts %}
+                    {% if key == 0 %}
+                    <article class="post">
+                        {% if post.featured_images.count %}
+                        <a href="{{ post.url }}" class="image_thumb_zoom">
+                            <img data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                        </a>
+                        {% else %}
+                        <a href="{{ post.url }}">
+                            <img  src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                        </a>
+                        {% endif %}
+
+                        <h4 class="post-title">
+                            <a href="{{ post.url }}" title="{{ post.title }}"
+                               rel="bookmark">{{ post.title }}</a>
+                        </h4>
+                        {{ html_limit(post.content_html,100)|raw }}
+                    </article>
+                    {% else %}
+                    <article class="post">
+                        <div class="entry clearfix">
+                            <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">
+                                {% if post.featured_images.count %}
+                                <img class="thumb" data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                                {% else %}
+                                <img class="thumb" src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                                {% endif %}
+                                <h4 class="post-title">{{ post.title }}</h4>
+                            </a>
+                            {{ html_limit(post.content_html,40)|raw }}
+                        </div>
+                    </article>
+                    {% endif %}
+                    {% else %}
+                    <div class="no-data">{{ noPostsMessage }}</div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="home-bottom" class="clearfix">
+            <h3 class="title"><a title="Nodejs"><span>Nodejs</span></a></h3>
+            <div class="row-fluid">
+            {% set posts = blogPosts3.posts %}
+
+                {% for key, post in posts %}
+                    {% if key == 0 %}
+                        <div class="span6">
+                            <article class="post">
+                                {% if post.featured_images.count %}
+                                <a href="{{ post.url }}" class="image_thumb_zoom">
+                                    <img data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                                </a>
+                                {% else %}
+                                <a href="{{ post.url }}">
+                                    <img  src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                                </a>
+                                {% endif %}
+                                <h4 class="post-title">
+                                    <a href="#" title="{{ post.title }}"
+                                       rel="bookmark">{{ post.title }}</a>
+                                </h4>
+                                {{ html_limit(post.content_html,100)|raw }}
+                            </article>
+                        </div>
+                    {% endif %}
+                {% else %}
+                <div class="no-data">{{ noPostsMessage }}</div>
+                {% endfor %}
+
+
+                <div class="span6">
+                    {% for key, post in posts %}
+                        {% if key > 0 %}
+                            <article class="post">
+                                <div class="entry clearfix">
+                                    <a href="{{ post.url }}" rel="bookmark">
+                                        {% if post.featured_images.count %}
+                                            <img class="thumb" data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                                        {% else %}
+                                            <img class="thumb" src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                                        {% endif %}
+                                        <h4 class="post-title">{{ post.title }}</h4>
+                                    </a>
+                                    {{ html_limit(post.content_html,40)|raw }}
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% else %}
+                    <div class="no-data">{{ noPostsMessage }}</div>
+                    {% endfor %}
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>

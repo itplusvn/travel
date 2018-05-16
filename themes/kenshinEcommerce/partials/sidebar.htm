@@ -1,0 +1,58 @@
+[viewBag]
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+
+[fanpageFacebook]
+nameFanFace = "octobercms"
+==
+<div id="sidebar" class="span4">
+
+
+{% component 'fanpageFacebook' %}
+
+    <div id="tabwidget" class="widget tab-container">
+        <ul id="tabnav" class="clearfix">
+            <li><h3><a href="#tab1"><img src="{{ 'assets/images/view-white-bg.png'|theme }}" alt="Recent">Recent</a>
+            </h3></li>
+        </ul>
+        <div id="tab-content">
+            <div id="tab1" style="display: block; ">
+                {% set posts = blogPosts.posts %}
+                <ul id="itemContainer" class="recent-tab">
+                    {% for post in posts %}
+                        <li>
+                            <a href="{{ post.url }}">
+                                {% if post.featured_images.count %}
+                                <img class="thumb" data-src="{{ post.featured_images[0].filename }}" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}">
+                                {% else %}
+                                <img class="thumb" src="{{'assets/images/no-image.png'|theme}}" alt="{{ post.title }}">
+                                {% endif %}
+                            </a>
+                            <h4 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                            <p class="info">
+                                 Posted {% if post.categories.count %} in {% endif %}
+                                    {% for category in post.categories %}
+                                        <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+
+                            </p>
+                            <div class="clearfix"></div>
+                        </li>
+                    {% else %}
+                        <li class="no-data">{{ noPostsMessage }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="clear"></div>
+                <!-- End most viewed post -->
+            </div>
+        </div><!-- /#tab-content -->
+
+    </div><!-- /#tab-widget -->
+
+</div><!-- sidebar -->

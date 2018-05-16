@@ -1,0 +1,74 @@
+description = "Default layout"
+==
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+
+<!--[if IE 9]>
+<html class="ie ie9" lang="en-US">
+<![endif]-->
+
+<!--[if !(IE 7) | !(IE 8) | !(IE 9)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>October CMS - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="OctoberCMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="OctoberCMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+
+        <link rel='stylesheet' id='magz-style-css'  href="{{'assets/css/style.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='swipemenu-css'  href="{{'assets/css/swipemenu.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='flexslider-css'  href="{{'assets/css/flexslider.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='bootstrap-css'  href="{{'assets/css/bootstrap.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='bootstrap-responsive-css'  href="{{'assets/css/bootstrap-responsive.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='simplyscroll-css'  href="{{'assets/css/jquery.simplyscroll.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='rating-css'  href="{{'assets/css/jquery.rating.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='ie-styles-css'  href="{{'assets/css/ie.css'|theme }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='Roboto-css'  href='http://fonts.googleapis.com/css?family=Roboto' type='text/css' media='all' />
+        {% styles %}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/html5.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/bootstrap.min.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.flexslider.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.flexslider.init.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.bxslider.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.rating.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.bxslider.init.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.idTabs.min.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.simplyscroll.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/fluidvids.min.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.sidr.min.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.touchSwipe.min.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/jquery.swipemenu.init.js'|theme }}"></script>
+        <script type='text/javascript' src="{{ 'assets/javascript/custom.js'|theme }}"></script>
+    </head>
+    <body>
+
+        <!-- Header -->
+            {% partial 'header' %}
+
+        <!-- Content -->
+        <div id="content" class="container">
+            <div id="main" class="row-fluid">
+                <div id="main-left" class="span8">
+                    {% page %}
+                </div><!-- #main-left -->
+                {% partial 'sidebar' %}
+            </div><!-- #main -->
+        </div>
+
+        <!-- Footer -->
+            {% partial 'footer' %}
+        {% scripts %}
+    </body>
+</html>

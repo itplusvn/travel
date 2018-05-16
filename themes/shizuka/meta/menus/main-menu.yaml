@@ -1,0 +1,76 @@
+name: 'Main Menu'
+items:
+    -
+        title: Home
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: home
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Java
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '2'
+        cmsPage: blog/category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: dropdown
+            isExternal: '0'
+        items:
+            -
+                title: 'Spring boot'
+                nesting: '0'
+                type: blog-category
+                code: ''
+                reference: '3'
+                cmsPage: blog/category
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Spring Security'
+                nesting: '0'
+                type: blog-category
+                code: ''
+                reference: '4'
+                cmsPage: blog/category
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: 'October CMS'
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '5'
+        cmsPage: blog/category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Nodejs
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '6'
+        cmsPage: blog/category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

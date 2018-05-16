@@ -1,0 +1,38 @@
+[viewBag]
+
+[slideshow]
+slideshow = 1
+numberOfSlide = 5
+==
+<div id="slider" class="clearfix">
+    <div id="slide" class="flexslider">
+
+
+        {% if slideshow.slideshow.slides %}
+        <ul class="slides">
+            {% for i, slide in slideshow.slideshow.slides %}
+                <li>
+                    <a href="#" title="{{ slide.image.title }}"
+                       rel="bookmark">
+                        <img width="770" height="364"
+                             src="{{ slide.image.path }}"
+                             alt="{{ slide.image.title }}"/>
+                    </a>
+                    <div class="entry">
+                        {% if slide.name %}<h4>{{ slide.name }}</h4>{% endif %}
+                        {% if slide.description %}<p>{{ slide.description|raw }}</p>{% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+
+
+
+
+
+
+    </div>
+</div>

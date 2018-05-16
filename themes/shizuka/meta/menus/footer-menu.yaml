@@ -1,0 +1,47 @@
+name: 'Footer Menu'
+items:
+    -
+        title: Home
+        type: cms-page
+        code: ''
+        reference: home
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Java
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '2'
+        cmsPage: blog/category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'October CMS'
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '5'
+        cmsPage: blog/category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Nodejs
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '6'
+        cmsPage: blog/category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
